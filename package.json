@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/Finbarr12/email-service/issues"
   },
-  "homepage": "https://github.com/Finbarr12/email-service#readme"
+  "homepage": "https://github.com/Finbarr12/email-service#readme",
+  "dependencies": {
+    "@types/nodemailer": "^6.4.7",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3",
+    "nodemailer": "^6.9.1",
+    "nodemailer-sendinblue-transport": "^2.0.1"
+  }
 }
