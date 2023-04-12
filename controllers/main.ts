@@ -13,7 +13,7 @@ const Mailer = (req: Request, res: Response) => {
 
     const message = {
       from: "ogbonnafinbarr1@gmail.com",
-      to: "ogbonnafinbarr@gmail.com",
+      to: "favouryusuf45@gmail.com",
       subject: "Test Email",
       text: "This is a test email from Sendinblue transport.",
     };
