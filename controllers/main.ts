@@ -17,6 +17,21 @@ const Mailer = (req: Request, res: Response) => {
       subject: "Test Email",
       text: "This is a test email from Sendinblue transport.",
     };
+
+    transporter.sendMail(
+      message,
+      function (error: Error | null, info: nodemailer.SentMessageInfo) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Email sent: " + info.response);
+        }
+      }
+    );
+
+    return res.status(200).json({
+      message: "successful",
+    });
   } catch (error) {
     res.status(400).json({
       message: "An error occured",
