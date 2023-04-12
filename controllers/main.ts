@@ -2,7 +2,8 @@ import { Request, Response } from "express";
 import nodemailer from "nodemailer";
 import sendInBlueTransport from "nodemailer-sendinblue-transport";
 
-const Mailer = (req: Request, res: Response) => {
+export const Mailer = (req: Request, res: Response) => {
+  const { email, messages, subject } = req.body;
   try {
     const transporter = nodemailer.createTransport(
       sendInBlueTransport({
@@ -12,10 +13,10 @@ const Mailer = (req: Request, res: Response) => {
     );
 
     const message = {
-      from: "ogbonnafinbarr1@gmail.com",
+      from: email,
       to: "favouryusuf45@gmail.com",
-      subject: "Test Email",
-      text: "This is a test email from Sendinblue transport.",
+      subject: subject,
+      text: messages,
     };
 
     transporter.sendMail(
