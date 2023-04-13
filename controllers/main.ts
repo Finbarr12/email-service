@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
-import nodemailer from "nodemailer";
+import * as nodemailer from "nodemailer";
 import sendInBlueTransport from "nodemailer-sendinblue-transport";
+import { EnvironmentVariables } from "../config/environs";
 
 export const Mailer = (req: Request, res: Response) => {
   const { email, messages, subject } = req.body;
   try {
     const transporter = nodemailer.createTransport(
-      sendInBlueTransport({
-        apiKey:
-          "xsmtpsib-781c361ba9e1ae405ecb50b406d6ac14c11df5cc24be3826344bb372d05bb638-ZS5QIh0WXYLxU2yP",
+      new sendInBlueTransport({
+        apiKey: EnvironmentVariables.sendInBlueKey,
       })
     );
 
@@ -33,10 +33,10 @@ export const Mailer = (req: Request, res: Response) => {
     return res.status(200).json({
       message: "successful",
     });
-  } catch (error) {
+  } catch (error: any) {
     res.status(400).json({
       message: "An error occured",
-      data: error,
+      data: error.message,
     });
   }
 };
