@@ -14,7 +14,7 @@ export const Mailer = (req: Request, res: Response) => {
 
     const message = {
       from: email,
-      to: "favouryusuf45@gmail.com",
+      to: "okonkwovincent63@gmail.com",
       subject: subject,
       text: messages,
     };
